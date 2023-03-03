@@ -44,4 +44,3 @@ jobs:
           GH_TOKEN: "${{ secrets.COREINT_BOT_TOKEN }}"
         run: |
           gh release create ${{ steps.release-data.outputs.next-version }} --target $(git rev-parse HEAD) --notes-file CHANGELOG.partial.md --prerelease
-          ls -all -R
