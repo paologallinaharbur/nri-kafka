@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### ⛓️ Dependencies
 - Upgraded github.com/stretchr/testify from 1.8.1 to 1.8.2 - [Changelog 🔗](https://github.com/stretchr/testify/releases/tag/1.8.2)
 
+## v3.3.1 - 2023-03-03
+
+### ⛓️ Dependencies
+- Upgraded github.com/stretchr/testify from 1.8.1 to 1.8.2 - [Changelog 🔗](https://github.com/stretchr/testify/releases/tag/1.8.2)
+
 ## v3.3.0 - 2023-02-20
 
 ### 🛡️ Security notices
