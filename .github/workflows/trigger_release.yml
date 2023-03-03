@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0
           ref: master
           token: "${{ secrets.COREINT_BOT_TOKEN }}"
-      - uses: newrelic/release-toolkit/contrib/ohi-release-notes@v1
+      - uses: newrelic/release-toolkit/contrib/ohi-release-notes@fix/runConfigActionExternally
         id: release-data
       ## TODO here in case the release is empty or on hold we should stop gracefully.
       - name: Configure Git
@@ -39,9 +39,9 @@ jobs:
           git add CHANGELOG.md
           git commit -m "Update changelog with changes from ${{ steps.release-data.outputs.next-version }}"
           git push -u origin master
-      - uses: newrelic/release-toolkit/render@v1
       - name: Create Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{ steps.release-data.outputs.next-version }} --target $(git rev-parse HEAD) --notes-file CHANGELOG.partial.md --prerelease
+          ls -all -R
