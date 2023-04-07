@@ -6,8 +6,7 @@ on:
       - master
       - main
   pull_request:
-  schedule:
-    - cron: "0 3 * * *"
+
 
 jobs:
   trivy:
