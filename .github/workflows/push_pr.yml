@@ -51,7 +51,7 @@ jobs:
           username: ${{ secrets.OHAI_DOCKER_HUB_ID }}
           password: ${{ secrets.OHAI_DOCKER_HUB_PASSWORD }}
       - name: Unit tests
-        run: which realpath; ls -all /usr/bin/realpath; rm -rf /opt/hostedtoolcache/Python /opt/hostedtoolcache/CodeQL /usr/share/swift /usr/local/.ghcup; which realpath; ls -all /usr/bin/realpath; realpath
+        run: which realpath; ls -all /usr/bin/realpath; sudo rm -rf /opt/hostedtoolcache/Python /opt/hostedtoolcache/CodeQL /usr/share/swift /usr/local/.ghcup; which realpath; ls -all /usr/bin/realpath; realpath
 
   test-windows:
     name: Run unit tests on Windows
