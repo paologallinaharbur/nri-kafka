@@ -3,7 +3,7 @@ module github.com/newrelic/nri-kafka
 go 1.20
 
 require (
-	github.com/Shopify/sarama v1.30.1
+	github.com/Shopify/sarama v1.40.0
 	github.com/newrelic/infra-integrations-sdk v3.7.3+incompatible
 	github.com/newrelic/nrjmx/gojmx v0.0.0-20230328105658-176501e60193
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414
