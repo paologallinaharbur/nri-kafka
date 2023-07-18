@@ -51,7 +51,7 @@ jobs:
           username: ${{ secrets.OHAI_DOCKER_HUB_ID }}
           password: ${{ secrets.OHAI_DOCKER_HUB_PASSWORD }}
       - name: Unit tests
-        run: make ci/test
+        run: which realpath; ls -all /usr/bin/realpath
 
   test-windows:
     name: Run unit tests on Windows
