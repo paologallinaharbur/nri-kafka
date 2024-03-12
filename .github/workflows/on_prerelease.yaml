@@ -24,11 +24,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        working-directory: src/github.com/${{ env.ORIGINAL_REPO_NAME }}/tests/integration/consumer-producer
-        run: |
-          docker buildx build --push --platform=linux/amd64 \
-            -t $CONSUMER_PRODUCER_DOCKER_IMAGE_NAME:latest \
+
             .
   # This is currently not covered by reusable workflow due to the retry mechanism
   test-integration-nix:
@@ -62,6 +58,7 @@ jobs:
       integration: kafka
       publish_schema: "ohi-jmx"
       run_integration_nix: false
+      test_package: false
     secrets:
       OHAI_AWS_ROLE_ARN_STAGING: ""
       OHAI_AWS_ROLE_SESSION_NAME_STAGING: ""

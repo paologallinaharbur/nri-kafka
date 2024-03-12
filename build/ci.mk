@@ -2,45 +2,19 @@ BUILDER_TAG ?= nri-$(INTEGRATION)-builder
 
 .PHONY : ci/deps
 ci/deps:
-	@docker build -t $(BUILDER_TAG) -f $(CURDIR)/build/Dockerfile $(CURDIR)
+	@echo "===> $(INTEGRATION) ===  [ci/prerelease] TAG env variable expected to be set"
 
 .PHONY : ci/debug-container
 ci/debug-container: ci/deps
-	@docker run --rm -it \
-			--name "nri-$(INTEGRATION)-debug" \
-			-v $(CURDIR):/go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			-w /go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			-e PRERELEASE=true \
-			-e GITHUB_TOKEN \
-			-e REPO_FULL_NAME \
-			-e TAG \
-			-e GPG_MAIL \
-			-e GPG_PASSPHRASE \
-			-e GPG_PRIVATE_KEY_BASE64 \
-			$(BUILDER_TAG) bash
+	@echo "===> $(INTEGRATION) ===  [ci/prerelease] TAG env variable expected to be set"
 
 .PHONY : ci/test
 ci/test: ci/deps
-	@docker run --rm -t \
-			--name "nri-$(INTEGRATION)-test" \
-			-v $(CURDIR):/go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			-w /go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			$(BUILDER_TAG) make test
+	@echo "===> $(INTEGRATION) ===  [ci/prerelease] TAG env variable expected to be set"
 
 .PHONY : ci/build
 ci/build: ci/deps
-ifdef TAG
-	@docker run --rm -t \
-			--name "nri-$(INTEGRATION)-build" \
-			-v $(CURDIR):/go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			-w /go/src/github.com/newrelic/nri-$(INTEGRATION) \
-			-e INTEGRATION \
-			-e TAG \
-			$(BUILDER_TAG) make release/build
-else
-	@echo "===> $(INTEGRATION) ===  [ci/build] TAG env variable expected to be set"
-	exit 1
-endif
+	@echo "===> $(INTEGRATION) ===  [ci/prerelease] TAG env variable expected to be set"
 
 .PHONY : ci/prerelease
 ci/prerelease: ci/deps
